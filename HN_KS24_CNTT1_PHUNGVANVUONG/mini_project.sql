@@ -1,6 +1,6 @@
 create database mini_project;
 use mini_project;
-
+drop database mini_project;
 create table Reader (
 	reader_id int auto_increment primary key,
     reader_name varchar(100) not null,
@@ -16,8 +16,8 @@ create table Book(
 );
 
 create table Borrow(
-	reader_id int not null,
-    book_id int not null,
+	reader_id int,
+    book_id int,
     borrow_date date default(current_date),
     return_date date,
     primary key (reader_id, book_id),
@@ -30,9 +30,9 @@ alter table Book modify author varchar(150);
 alter table Borrow add constraint check_return_date check(return_date >= borrow_date);
 
 insert into Reader(reader_id,reader_name, phone, email, register_date) values 
-(1,'Nguyễn Văn An', 0901234567, 'an.nguyen@gmail.com', '2024-09-01'), 
-(2,'Trần Thị Bình', 0912345678, 'binh.tran@gmail.com', '2024-09-05'),
-(3,'Lê Minh Châu', 0923456789, 'chau.le@gmail.com', '2024-09-10');
+(1,'Nguyễn Văn An', '0901234567', 'an.nguyen@gmail.com', '2024-09-01'), 
+(2,'Trần Thị Bình', '0912345678', 'binh.tran@gmail.com', '2024-09-05'),
+(3,'Lê Minh Châu', '0923456789', 'chau.le@gmail.com', '2024-09-10');
 
 insert into Book(book_id, book_title, author, publish_year) values
 (101, 'Lập trình C căn bản', 'Nguyễn Văn A', 2018),
@@ -41,12 +41,12 @@ insert into Book(book_id, book_title, author, publish_year) values
 (104, 'Hệ quản trị MySQL', 'Phạm Văn D', 2021);
 
 insert into Borrow(reader_id,book_id, borrow_date, return_date) values
-(1, 101, '2024-09-15', ''),
+(1, 101, '2024-09-15', null),
 (1, 102, '2024-09-15', '2024-09-25'),
-(2, 103, '2024-09-18', '');
+(2, 103, '2024-09-18', null);
 
- update Borrow set return_date = '2024-10-01' where reader_id ='1';
- update Book set publish_year = '2023' where publish_year >= '2021';
+ update Borrow set return_date = '2024-10-01' where reader_id = 1;
+ update Book set publish_year = 2023 where publish_year >= 2021;
  delete from Borrow where borrow_date < '2024-09-18';
 
 
