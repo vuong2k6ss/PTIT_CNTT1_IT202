@@ -18,3 +18,4 @@ SELECT * FROM Student;
 
 -- Lấy mã sinh viên và họ tên
 SELECT student_id, full_name FROM Student;
+
