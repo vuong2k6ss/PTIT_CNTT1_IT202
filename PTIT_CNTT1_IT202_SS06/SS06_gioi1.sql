@@ -1,0 +1,47 @@
+create database SS06_gioi1;
+use SS06_gioi1;
+
+create table customers (
+    customer_id int primary key,
+    full_name varchar(255),
+    city varchar(255)
+);
+
+
+create table orders (
+    order_id int primary key,
+    customer_id int,
+    order_date date,
+    status enum('pending', 'completed', 'cancelled'),
+    total_amount decimal(10,2),
+    foreign key (customer_id) references customers(customer_id)
+);
+
+insert into customers (customer_id, full_name, city) values
+(1, 'Nguyễn Văn An', 'Hà Nội'),
+(2, 'Trần Thị Bình', 'Hồ Chí Minh'),
+(3, 'Lê Văn Cường', 'Đà Nẵng'),
+(4, 'Phạm Thị Dung', 'Hà Nội'),
+(5, 'Hoàng Văn Em', 'Cần Thơ');
+
+insert into orders (order_id, customer_id, order_date, status, total_amount) values
+(101, 1, '2025-01-01', 'completed', 1500000),
+(102, 1, '2025-01-05', 'pending',   800000),
+(103, 2, '2025-01-03', 'completed', 2300000),
+(104, 3, '2025-01-10', 'cancelled', 1200000),
+(105, 2, '2025-01-12', 'pending',    950000);
+
+
+select order_date, sum(total_amount) as total_revenue from orders
+where status = 'completed'
+group by order_date;
+
+
+select order_date, count(order_id) as total_orders from orders
+where status = 'completed'
+group by order_date;
+
+select order_date, sum(total_amount) as total_revenue, count(order_id) as total_orders from orders
+where status = 'completed'
+group by order_date
+having sum(total_amount) > 10000000;

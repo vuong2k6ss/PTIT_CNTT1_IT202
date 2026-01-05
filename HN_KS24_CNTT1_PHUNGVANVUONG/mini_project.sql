@@ -49,7 +49,7 @@ insert into Borrow(reader_id,book_id, borrow_date, return_date) values
  update Book set publish_year = 2023 where publish_year >= 2021;
  delete from Borrow where borrow_date < '2024-09-18';
 
-
 select * from Reader;
 select * from Book;
 select * from Borrow;
+
