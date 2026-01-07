@@ -118,7 +118,7 @@ from customers c join orders o on c.customer_id = o.customer_id
 group by c.customer_id, c.customer_name
 having count(o.order_id) >= 2;
 
--- B6. Giá trung bình, thấp nhất, cao nhất theo danh mục
+-- Giá trung bình, thấp nhất, cao nhất theo danh mục
 select c.category_name, avg(p.price) avg_price, min(p.price) min_price, max(p.price) max_price
 from categories c join products p on c.category_id = p.category_id
 group by c.category_name;
