@@ -68,11 +68,11 @@ INSERT INTO Enrollment VALUES
 
 -- Phần A: cơ bản
 -- câu1: Tạo View View_StudentBasic hiển thị: StudentID, FullName , DeptName. Sau đó truy vấn toàn bộ View_StudentBasic;
-create view View_StudentBasic as select s.StudentId, s.FullName, s.DeptName from Student s 
+create view View_StudentBasic as select s.StudentID, s.FullName, d.DeptName from Student s 
 join Department d on s.DeptId = s.DeptId;
 
 -- truy vấn
-select * from view_Studentbasic; 
+select * from View_StudentBasic; 
 
 -- caau2: Tạo Regular Index cho cột FullName của bảng Student
 create index idx_student_fullname on Student(FullName)
