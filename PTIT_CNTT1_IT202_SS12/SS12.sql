@@ -1,3 +1,4 @@
+drop database SS12;
 create database SS12;
 use SS12;
 
