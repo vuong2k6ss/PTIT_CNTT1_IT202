@@ -93,7 +93,7 @@ group by u.user_id, u.username, u.post_count;
 
 -- 5) THỰC HIỆN KIỂM THỬ (TEST CASES)
 -- A. Thử like bài của chính mình (Alice like bài 1 - của Alice) -> Sẽ báo lỗi
--- insert into likes (user_id, post_id) values (1, 1); 
+insert into likes (user_id, post_id) values (1, 1); 
 
 -- B. Thêm like hợp lệ
 insert into likes (user_id, post_id) values (2, 1); -- Bob like bài Alice

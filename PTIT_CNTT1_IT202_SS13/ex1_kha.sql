@@ -1,5 +1,6 @@
 create database SS13_ex1;
 use SS13_ex1;
+drop database SS13_ex1;
 CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE NOT NULL,
